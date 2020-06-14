@@ -194,8 +194,9 @@ contract EthSigil is ERC721, Ownable {
 
     function chargeSigil(uint256 _tokenId) public payable {
         require(msg.value > 0, "Not enough charge");
-
         SigilData storage sigil = sigils[_tokenId];
+        require(sigil.alive, "Sigil is burned");
+
         sigil.charge = sigil.charge.add(msg.value);
         sigil.chargeCount = sigil.chargeCount.add(1);
 
