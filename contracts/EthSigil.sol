@@ -28,7 +28,9 @@ contract EthSigil is ERC721, Ownable {
         string incantation;
     }
 
-    mapping(uint256 => Charge[]) chargesByTokenId; /**@dev Keeps track of all charges
+    mapping(uint256 => Charge[]) chargesByTokenId;
+    /**@dev Keeps track of all charges
+     */
     SigilData[] sigils; /**@dev Keeps track of all sigils */
 
     /**@dev Events  */
