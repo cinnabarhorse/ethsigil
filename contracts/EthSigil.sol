@@ -128,7 +128,6 @@ contract EthSigil is ERC721, Ownable {
         view
         returns (uint256[] memory ownerSigils)
     {
-        //Iterate through all sigils and return IDs of sigils that belong to owner
         uint256 tokenCount = balanceOf(_owner);
 
         if (tokenCount == 0) {
@@ -138,9 +137,6 @@ contract EthSigil is ERC721, Ownable {
             uint256[] memory result = new uint256[](tokenCount);
             uint256 totalSigils = sigils.length - 1;
             uint256 resultIndex = 0;
-
-            // We count on the fact that all cats have IDs starting at 1 and increasing
-            // sequentially up to the totalCat count.
             uint256 sigilId;
 
             for (sigilId = 0; sigilId <= totalSigils; sigilId++) {
@@ -152,10 +148,6 @@ contract EthSigil is ERC721, Ownable {
 
             return result;
         }
-    }
-
-    function getRemainingTime(uint256 _tokenId) public view returns (uint256) {
-        return sigils[_tokenId].chargingPeriod.sub(now);
     }
 
     /***********************************|
